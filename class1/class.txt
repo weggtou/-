@@ -1,0 +1,95 @@
+对枚举的优化
+
+1.如果是类似蓝桥杯19709的题目
+对每个数字进行相同的操作并且调用一次判断
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+  int N;
+  cin >> N;
+  int cont = 0;
+  for(int i = 1;i<=N;i++){
+    int x =i;
+    int index = 1;
+    bool good = true;
+    while (x){
+      int w = x%10;
+      x/=10;
+      if((index&1)!=(w&1)){
+        good = 0;
+        break;
+      }
+      index++;
+    }
+    if (good){cont++;}
+  }
+  cout << cont;
+}
+可以将判断过程改为匿名函数，直接返货true和false，这样就不用另外拿一个数来存是否找到了
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+  int N;
+  cin >> N;
+  int cont = 0;
+  for(int i = 1;i<=N;i++){ 
+    if ([](int x){
+      int index = 1;
+      while (x){
+        int w = x%10;
+        x/=10;
+        if((index&1)!=(w&1)){
+          return false;
+        }
+        index++;
+      }
+      return true;
+    }(i)){cont++;}
+  }
+  cout << cont;
+}
+这里直接将函数直接改为匿名函数
+
+2.如果需要一个数值来记录奇偶可以index^1,这样就只会在01之间变换
+int main(){
+  int N;
+  cin >> N;
+  int cont = 0;
+  for(int i = 1;i<=N;i++){ 
+    if ([](int x){
+      int index = 1;
+      while (x){
+        int w = x%10;
+        x/=10;
+        if((index&1)!=(w&1)){
+          return false;
+        }
+        index^1;
+      }
+      return true;
+    }(i)){cont++;}
+  }
+  cout << cont;
+}
+
+3.对于while循环如果每轮都进行相同的操作，可直接写成for循环更加简便
+int main(){
+  int N;
+  cin >> N;
+  int cont = 0;
+  for(int i = 1;i<=N;i++){ 
+    if ([](int x){
+      for (int index = 1;x;x/=10,index^1){
+        int w = x%10;
+        if((index&1)!=(w&1)){
+          return false;
+        }
+      }
+      return true;
+    }(i)){cont++;}
+  }
+  cout << cont;
+}
+因为for中的操作在循环最后进行，所以改成这样没问题而且简便
