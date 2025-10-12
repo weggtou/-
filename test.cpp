@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main(){
-  string a = "09";
-  cout << stoi(a);
+  int i=0;
+  for(;i<=3;i++){
+    cout << i;
+  }
+  cout << i;
 }
