@@ -13,3 +13,7 @@ do{
   x/=10;
 }while(x);
 当x为0时也会取到一位0
+
+3.快速命名二维数组的方法
+vector <vector <long long>> all(n+1,vector<long long> (m+1));
+auto all = vector(n+1,vector<long long> (m+1));

@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <numeric>
 using namespace std;
 
 int main(){
@@ -8,20 +7,20 @@ int main(){
   cin >> n >>k;
   long long a;
   vector<long long> all;
+  vector<long long> all2(n);
   long long he = 0;
   for(int i =0;i<n-1;i++){
-    scanf("%ld",&a);
+    scanf("%lld",&a);
     he+=a;
     all.push_back(a);
+    if(i)all2[i]=all2[i-1];
+    all2[i]+=all[i];
+    if(i+1>k)all2[i]-=all[i-k];
   }
   long long max=0;
-  for(int i = 0;i+k-1<n-1;i++){
-    long long sum =0;
-    for(int j = 0;j<k;j++){
-      sum+=all[i+j];
-    }
-    if(sum>=max){
-        max = sum;
+  for(int i = k-1;i<n;i++){
+    if(all2[i]>=max){
+        max = all2[i];
       }
   }
   cout << he-max;
