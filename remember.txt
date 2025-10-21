@@ -17,3 +17,5 @@ do{
 3.快速命名二维数组的方法
 vector <vector <long long>> all(n+1,vector<long long> (m+1));
 auto all = vector(n+1,vector<long long> (m+1));
+
+4.先按正常逻辑想出来，再看能优化那一步
