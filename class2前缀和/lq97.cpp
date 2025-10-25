@@ -21,7 +21,7 @@ int main(){
   for(auto i:all){
     cont[i]++;
   }
-  int ans=0;
+  long long ans=0;
   for(auto &[_,i]:cont){
     ans+=(i*(i-1))/2;
   }
