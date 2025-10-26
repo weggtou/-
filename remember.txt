@@ -19,3 +19,5 @@ vector <vector <long long>> all(n+1,vector<long long> (m+1));
 auto all = vector(n+1,vector<long long> (m+1));
 
 4.先按正常逻辑想出来，再看能优化那一步
+
+5.long long 的最大值LLong_MAX
