@@ -21,3 +21,8 @@ auto all = vector(n+1,vector<long long> (m+1));
 4.先按正常逻辑想出来，再看能优化那一步
 
 5.long long 的最大值LLong_MAX
+
+6.i++永远是在这句话里是i,这句话结束时是i+1;
+对于int x = a[i++]也适用
+这句话结束前为i所以x = a[i];
+这句话结束后i=i+1;
